@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Edit Profile</title>
+        <h:outputStylesheet name="styles.css" library="css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="/resources/template/template.xhtml">
+    		<ui:define name="content">
+        <h:form class="model-conten">
+            <h2>Edit Profile</h2>
+            <h:outputLabel>Masukan Email Anda</h:outputLabel><br/>
+            <h:inputText class="input_text" value="#{tblUser.email}"/><br/><br/>
+            <h:commandButton class="button_log" value="Search" action="#{tblUser.getByEmail()}"/><br/><br/>
+            <h:outputLabel>Nama Lengkap</h:outputLabel><br/>
+            <h:inputText class="input_text" value="#{tblUser.namaPanjang}"/>
+            <br/><br/>
+            <h:outputLabel>No. Handphone</h:outputLabel><br/>
+            <h:inputText class="input_text" value="#{tblUser.noTelp}"/>
+            <br/><br/>
+            <h:outputLabel>Alamat</h:outputLabel><br/>
+            <h:inputText class="input_text" value="#{tblUser.alamat}"/>
+            <br/><br/>
+            <h:outputLabel>Password</h:outputLabel><br/>
+            <h:inputText class="input_text" value="#{tblUser.password}"/>
+            <br/><br/>
+            <h:commandButton value="Edit" class="button_log" action="#{tblUser.edit()}"/> &nbsp;
+        </h:form>
+                    </ui:define>
+    	</ui:composition>
+    </h:body>
+</html>
+

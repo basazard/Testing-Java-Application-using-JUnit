@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="styles.css" library="css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="/resources/template/template.xhtml">
+    		<ui:define name="content">
+                    <section id="showcase">
+      <div class="container">
+        <h1>Selamat Datang di Laundry Brosist</h1>
+        <p>Laundry Brosist adalah sebuah solusi untuk mencuci dimana Laundry Brosist menerima berbagai macam jenis Pakaian untuk di laundry, mulai dari pakaian biasa hingga sepatu!</p>
+      </div>
+    </section>
+
+    			<section id="boxes">
+                            <div class="container">
+                                <h1 class="title-index">Mengapa Laundry Brosist?</h1>
+                                <div class="box">
+                                    <h3>Satu Mesin Satu Pelanggan</h3>
+                                    <h:graphicImage library="images" name="mesin.png"/>
+                                        <p> Membersihkan 99% noda yang ada di pakaian anda</p>
+                                </div>
+                                <div class="box">
+                                    <h3>Tanpa Khawatir</h3>
+                                    <h:graphicImage library="images" name="Shield.png"/>
+                                        <p>Mencuci di Laundry Brosist tidak perlu khawatir karena dijamin. Gak perlu lagi khawatir cucian masih kotor, hilang</p>
+                                </div>
+                                <div class="box">
+                                    <h3>Puas</h3>
+                                    <h:graphicImage library="images" name="puas.png"/>
+                                    <p>Pelayanan 24 jam dan hasil pakaian yang bersih dapat memuaskan pelanggan</p>
+                                </div>
+                             </div>
+                        </section>
+    		</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>
+

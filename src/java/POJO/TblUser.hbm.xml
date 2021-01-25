@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 24, 2020 12:31:23 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.TblUser" table="tbl_user" catalog="laundry" optimistic-lock="version">
+        <id name="idUser" type="java.lang.Integer">
+            <column name="id_user" />
+            <generator class="identity" />
+        </id>
+        <property name="email" type="string">
+            <column name="email" length="128" not-null="true" />
+        </property>
+        <property name="namaPanjang" type="string">
+            <column name="nama_panjang" length="128" not-null="true" />
+        </property>
+        <property name="noTelp" type="string">
+            <column name="no_telp" length="12" not-null="true" />
+        </property>
+        <property name="alamat" type="string">
+            <column name="alamat" length="128" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="128" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

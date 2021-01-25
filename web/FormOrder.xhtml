@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <script type="text/javascript">
+            function validasi(){
+                if((document.getElementById("FormOrder:InputNama").value='') || (document.getElementById("FormOrder:InputTanggal").value='') || (document.getElementById("FormOrder:InputAlamat").value=''))
+                {
+                    alert("Harap isi data dengan benar");
+                    return false;
+                }else
+                    alert("Pesanan Berhasil Pesan!");
+                    return true;
+            }
+            
+            function maxjumlah() {
+                if(document.getElementById("FormOrder:jumlah").value > 5){
+                    alert("Jumlah maksimal hanya sampai 5 pcs!!")
+                }
+                else
+                    document.form1.price.value = (document.form1.jumlah.value)*(document.form1.price2.value)
+            }
+        </script>
+    </h:head>
+    <h:body>
+        <h:form id="FormOrder" onsubmit="validasi()">
+            <label>Nama Pemesan</label><br/>
+            <h:inputText id="InputNama" a:placeholder="Nama Pemesan" value="#{tblOrder.nama}"/>
+            <br/><br/>
+            <label>Tanggal Pemesanan</label><br/>
+            <h:inputText id="InputTanggal" a:placeholder="dd/mm/yyyy" value="#{tblOrder.tglBooking}"/>
+            <br/><br/>
+            <label>Alamat</label><br/>
+            <h:inputText id="InputAlamat" a:placeholder="Alamat" value="#{tblOrder.alamat}"/>
+            <br/><br/>
+            <label>Pilihan Paket</label><br/>
+            <h:selectOneRadio value="#{tblOrder.jenisLayanan}">
+                <f:selectItem itemLabel="Kiloan" itemValue="Kiloan" />
+                <f:selectItem itemLabel="Tas" itemValue="Tas" />
+                <f:selectItem itemLabel="Sepatu" itemValue="Sepatu" />
+                <f:selectItem itemLabel="Kain" itemValue="Kain" />
+            </h:selectOneRadio>
+            <br/><br/>
+            <label>Berat</label><br/>
+            <h:inputText a:placeholder="Berat" value="#{tblOrder.berat}"/><label>KG</label>
+            <br/><br/>
+            <label>Harga</label><br/>
+            <label>Rp. </label><h:inputText value="#{tblOrder.hargaBerat}"/>
+            <br/><br/>
+            <label>Jumlah</label><br/>
+            <h:inputText id="jumlah" value="#{tblOrder.jumlah}"/><label>pcs</label>
+            <br/><br/>
+            <label>Harga</label>
+            <label>Rp. </label><h:inputText onchange="maxjumlah()" id="price2" value="#{tblOrder.hargaJumlah}"/>
+            <br/><br/>
+            <label>Total</label><br/>
+            <label>Rp. </label><h:inputText a:placeholder="Total Harga" value="#{tblOrder.total}"/>
+            <br/><br/>
+            <h:commandButton value="Order" action="#{tblOrder.save_booking()}"/>
+        </h:form>
+    </h:body>
+</html>
+

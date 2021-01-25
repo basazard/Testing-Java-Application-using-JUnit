@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="styles.css" library="css" />
+    </h:head>
+    <h:body>
+        <h:form class="model-conten">
+            <h2>Welcome to Laundry Brosist</h2>
+            <h:inputText id="username" a:placeholder="Email" class="input_text" value="#{tblUser.email}" />
+            <h:inputSecret id="password" a:placeholder="Password" class="input_text" value="#{tblUser.password}"/>
+            <h:commandButton action="#{tblUser.validasiLoginUser()}" value="Sign In" class="button_log"/><br/><br/>
+            <h:commandLink value="Masuk tanpa akun" action="index_non.xhtml"/><br/>
+            <h:outputLabel>Or</h:outputLabel><h:commandLink action="FormRegisterUser.xhtml">Click Here to register!</h:commandLink>
+        </h:form>
+        <h:form>
+            <h:commandLink class="link-admin" value="Klik Disini untuk Login Sebagai Admin" action="FormLoginAdmin.xhtml"/>            
+        </h:form>
+    </h:body>
+</html>
+

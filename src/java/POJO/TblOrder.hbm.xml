@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 24, 2020 12:31:23 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.TblOrder" table="tbl_order" catalog="laundry" optimistic-lock="version">
+        <id name="idOrder" type="java.lang.Integer">
+            <column name="id_order" />
+            <generator class="identity" />
+        </id>
+        <property name="nama" type="string">
+            <column name="nama" length="128" not-null="true" />
+        </property>
+        <property name="tglBooking" type="string">
+            <column name="tgl_booking" length="10" not-null="true" />
+        </property>
+        <property name="alamat" type="string">
+            <column name="alamat" length="128" not-null="true" />
+        </property>
+        <property name="jenisLayanan" type="string">
+            <column name="`jenis _layanan`" length="11" not-null="true" />
+        </property>
+        <property name="berat" type="java.lang.Integer">
+            <column name="berat" />
+        </property>
+        <property name="hargaBerat" type="java.lang.Integer">
+            <column name="harga_berat" />
+        </property>
+        <property name="jumlah" type="java.lang.Integer">
+            <column name="jumlah" />
+        </property>
+        <property name="hargaJumlah" type="java.lang.Integer">
+            <column name="harga_jumlah" />
+        </property>
+        <property name="total" type="java.lang.Integer">
+            <column name="total" />
+        </property>
+    </class>
+</hibernate-mapping>

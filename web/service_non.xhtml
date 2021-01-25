@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Service</title>
+        <h:outputStylesheet name="styles.css" library="css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="/resources/template/template_non.xhtml">
+    		<ui:define name="content">
+                   <section id="main">
+      <div class="container">
+        <article id="main-col">
+          <h1 class="page-title">Services</h1>
+          <ul id="services">
+            <li>
+              <h3>Paket Kiloan</h3>
+              <p>Pada paket ini sudah termasuk jasa cuci, jasa setrika hingga packing kembali ke pelanggan. dalam paket ini pakaian yang termasuk adalah: Baju, Celana, dan Jaket.</p>
+						  <p>Harga: Rp 8.000,00/KG</p>
+            </li>
+            <li>
+              <h3>Paket Sepatu</h3>
+              <p>Selain pakaian biasa Laundry Brosist juga menerima cuci Sepatu, pastinya dengan teknik mencuci yang baik dan benar supaya sepatu kalian akan seperti baru!</p>
+						  <p>Harga: Rp 25.000,00/Pasang</p>
+            </li>
+            <li>
+              <h3>Paket Mevvah</h3>
+              <p>Sebagai laundry kekinian Laundry Brosist juga menerima mencuci pakaian khusus atau formal mulai dari Jas formal, Tas Kulit, dan pakaian formal lainya  </p>
+						  <p>Harga: Rp 50.000,00/Per Item</p>
+            </li>
+          </ul>
+        </article>
+
+        <aside id="sidebar">
+          <div class="blue">
+            <h3>Menjadi Member</h3>
+            <h:form class="quote">
+                          <p>Tertarik untuk mencuci di Laundry Brosist? Gabung Menjadi membership secara gratis dan dapatkan potongan 15% setiap pembelanjaan diatas Rp 100.000</p>
+                          <h:commandButton action="FormRegisterUser.xhtml" value="Gabung"/>
+            </h:form>
+          </div>
+        </aside>
+      </div>
+    </section>
+    		</ui:define>
+    	</ui:composition>
+    </h:body>
+</html>
+

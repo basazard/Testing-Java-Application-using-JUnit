@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DAOUser.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;LaundryBro2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">DAO</a> &gt; <span class="el_source">DAOUser.java</span></div><h1>DAOUser.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package DAO;
+
+import POJO.LaundryUtil;
+import POJO.TblUser;
+import java.util.ArrayList;
+import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+/**
+ *
+ * @author ARSY
+ */
+<span class="fc" id="L20">public class DAOUser {</span>
+    public List&lt;TblUser&gt; getBy (String email, String password){
+<span class="fc" id="L22">      TblUser u = new TblUser();</span>
+<span class="fc" id="L23">      List&lt;TblUser&gt; user = new ArrayList();</span>
+      
+<span class="fc" id="L25">      Transaction trans = null;</span>
+<span class="fc" id="L26">      Session session = LaundryUtil.getSessionFactory().openSession();</span>
+      try
+      {
+<span class="fc" id="L29">          trans = session.beginTransaction();</span>
+<span class="fc" id="L30">          Query query = session.createQuery(&quot;from TblUser where email= :email AND password= :pass&quot;);</span>
+<span class="fc" id="L31">          query.setString(&quot;email&quot;, email);</span>
+<span class="fc" id="L32">          query.setString(&quot;pass&quot;, password);</span>
+<span class="fc" id="L33">          u = (TblUser) query.uniqueResult();</span>
+<span class="fc" id="L34">          user = query.list();</span>
+          
+<span class="fc" id="L36">          trans.commit();</span>
+<span class="nc" id="L37">      } catch (Exception e) {</span>
+<span class="nc" id="L38">          System.out.println(e);</span>
+<span class="fc" id="L39">      }</span>
+<span class="fc" id="L40">      return user;</span>
+    }
+    
+    public List&lt;TblUser&gt; getByEmail (String email){
+<span class="nc" id="L44">      TblUser u = new TblUser();</span>
+<span class="nc" id="L45">      List&lt;TblUser&gt; user = new ArrayList();</span>
+      
+<span class="nc" id="L47">      Transaction trans = null;</span>
+<span class="nc" id="L48">      Session session = LaundryUtil.getSessionFactory().openSession();</span>
+      try
+      {
+<span class="nc" id="L51">          trans = session.beginTransaction();</span>
+<span class="nc" id="L52">          Query query = session.createQuery(&quot;from TblUser where email= :email&quot;);</span>
+<span class="nc" id="L53">          query.setString(&quot;email&quot;, email);</span>
+<span class="nc" id="L54">          u = (TblUser) query.uniqueResult();</span>
+<span class="nc" id="L55">          user = query.list();</span>
+          
+<span class="nc" id="L57">          trans.commit();</span>
+<span class="nc" id="L58">      } catch (Exception e) {</span>
+<span class="nc" id="L59">          System.out.println(e);</span>
+<span class="nc" id="L60">      }</span>
+<span class="nc" id="L61">      return user;</span>
+    }
+    
+    public void AddUser(TblUser user){
+<span class="fc" id="L65">          Transaction trans = null;</span>
+<span class="fc" id="L66">          Session session = LaundryUtil.getSessionFactory().openSession();</span>
+          try {
+<span class="fc" id="L68">              trans = session.beginTransaction();</span>
+<span class="nc" id="L69">              session.save(user);</span>
+<span class="nc" id="L70">              trans.commit();</span>
+<span class="fc" id="L71">          } catch (Exception e) {</span>
+<span class="fc" id="L72">              System.out.println(e);</span>
+<span class="nc" id="L73">          }</span>
+<span class="fc" id="L74">      }</span>
+    
+    public List&lt;TblUser&gt; ShowPelanggan(){
+<span class="fc" id="L77">            List us = new ArrayList();</span>
+<span class="fc" id="L78">            TblUser us1 = new TblUser();</span>
+<span class="fc" id="L79">            Transaction trans = null;</span>
+<span class="fc" id="L80">            Session session = LaundryUtil.getSessionFactory().openSession();</span>
+            try{
+<span class="fc" id="L82">                trans = session.beginTransaction();</span>
+<span class="fc" id="L83">                Query query = session.createQuery(&quot;from TblUser&quot;);</span>
+<span class="fc" id="L84">                us = query.list();</span>
+<span class="fc" id="L85">                us.add(us1.getIdUser());</span>
+<span class="fc" id="L86">                us.add(us1.getEmail());</span>
+<span class="fc" id="L87">                us.add(us1.getNamaPanjang());</span>
+<span class="fc" id="L88">                us.add(us1.getNoTelp());</span>
+<span class="fc" id="L89">                us.add(us1.getAlamat());</span>
+<span class="fc" id="L90">                us.add(us1.getPassword());</span>
+<span class="fc" id="L91">                trans.commit();</span>
+<span class="nc" id="L92">            } catch (Exception e){</span>
+<span class="nc" id="L93">                System.out.println(e);</span>
+<span class="fc" id="L94">            }</span>
+<span class="fc" id="L95">            return us;</span>
+        }
+    
+    public List&lt;TblUser&gt; ShowPelangganbyName(){
+<span class="nc" id="L99">            List us = new ArrayList();</span>
+<span class="nc" id="L100">            TblUser us1 = new TblUser();</span>
+<span class="nc" id="L101">            Transaction trans = null;</span>
+<span class="nc" id="L102">            Session session = LaundryUtil.getSessionFactory().openSession();</span>
+            try{
+<span class="nc" id="L104">                trans = session.beginTransaction();</span>
+<span class="nc" id="L105">                Query query = session.createQuery(&quot;from TblUser WHERE name LIKE ?&quot;);</span>
+<span class="nc" id="L106">                us = query.list();</span>
+<span class="nc" id="L107">                us.add(us1.getIdUser());</span>
+<span class="nc" id="L108">                us.add(us1.getEmail());</span>
+<span class="nc" id="L109">                us.add(us1.getNamaPanjang());</span>
+<span class="nc" id="L110">                us.add(us1.getNoTelp());</span>
+<span class="nc" id="L111">                us.add(us1.getAlamat());</span>
+<span class="nc" id="L112">                us.add(us1.getPassword());</span>
+<span class="nc" id="L113">                trans.commit();</span>
+<span class="nc" id="L114">            } catch (Exception e){</span>
+<span class="nc" id="L115">                System.out.println(e);</span>
+<span class="nc" id="L116">            }</span>
+<span class="nc" id="L117">            return us;</span>
+        }
+        
+        public List&lt;TblUser&gt; getbyID(String idU){
+<span class="nc" id="L121">            TblUser usr = new TblUser();</span>
+<span class="nc" id="L122">            List&lt;TblUser&gt; iUsr = new ArrayList();</span>
+<span class="nc" id="L123">            Transaction trans = null;</span>
+<span class="nc" id="L124">            Session session = LaundryUtil.getSessionFactory().openSession();</span>
+            try{
+<span class="nc" id="L126">                trans = session.beginTransaction();</span>
+<span class="nc" id="L127">                Query query = session.createQuery(&quot;from TblUser where id_user = :id&quot;);</span>
+<span class="nc" id="L128">                query.setString(&quot;id&quot;, idU);</span>
+<span class="nc" id="L129">                usr = (TblUser) query.uniqueResult();</span>
+<span class="nc" id="L130">                iUsr = query.list();</span>
+<span class="nc" id="L131">                trans.commit();</span>
+<span class="nc" id="L132">            } catch (Exception e){</span>
+<span class="nc" id="L133">                System.out.println(e);</span>
+<span class="nc" id="L134">            }return iUsr;</span>
+        }
+        
+        public List&lt;TblUser&gt; getbyEmail(String emailUser){
+<span class="fc" id="L138">            TblUser tbluser = new TblUser();</span>
+<span class="fc" id="L139">            List&lt;TblUser&gt; listUser = new ArrayList();</span>
+<span class="fc" id="L140">            Transaction trans = null;</span>
+<span class="fc" id="L141">            Session session = LaundryUtil.getSessionFactory().openSession();</span>
+            try{
+<span class="fc" id="L143">                trans = session.beginTransaction();</span>
+<span class="fc" id="L144">                Query query = session.createQuery(&quot;from TblUser where email = :email&quot;);</span>
+<span class="fc" id="L145">                query.setString(&quot;email&quot;, emailUser);</span>
+<span class="fc" id="L146">                tbluser = (TblUser) query.uniqueResult();</span>
+<span class="fc" id="L147">                listUser = query.list();</span>
+<span class="fc" id="L148">                trans.commit();</span>
+<span class="nc" id="L149">            } catch (Exception e){</span>
+<span class="nc" id="L150">                System.out.println(e);</span>
+<span class="fc" id="L151">            }return listUser;</span>
+        }
+        
+        public void deleteUser(Integer idU) {
+<span class="fc" id="L155">            Transaction trans = null;</span>
+<span class="fc" id="L156">            Session session = LaundryUtil.getSessionFactory().openSession();</span>
+            try{
+<span class="fc" id="L158">                trans = session.beginTransaction();</span>
+<span class="nc" id="L159">                TblUser usr = (TblUser) session.load(TblUser.class, new Integer(idU));</span>
+<span class="nc" id="L160">                session.delete(usr);</span>
+<span class="nc" id="L161">                trans.commit();</span>
+<span class="fc" id="L162">            }catch (Exception e){</span>
+<span class="fc" id="L163">                System.out.println(e);</span>
+<span class="nc" id="L164">            }</span>
+<span class="fc" id="L165">        }</span>
+        public void editUser(TblUser usr)
+        {
+<span class="fc" id="L168">            Transaction trans = null;</span>
+<span class="fc" id="L169">            Session session = LaundryUtil.getSessionFactory().openSession();</span>
+            try {
+<span class="fc" id="L171">                trans = session.beginTransaction();</span>
+<span class="nc" id="L172">                session.update(usr);</span>
+<span class="nc" id="L173">                trans.commit();</span>
+<span class="fc" id="L174">            }catch (Exception e){</span>
+<span class="fc" id="L175">                System.out.println(e);</span>
+<span class="nc" id="L176">            }</span>
+<span class="fc" id="L177">        }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
